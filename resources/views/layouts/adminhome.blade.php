@@ -6,11 +6,11 @@
         <div class="col-sm-12 col-md-4">
             <div class="list-group">
                 <ul>
-                    <a href="#" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">HOME
+                    <a href="{{ route('home') }}" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">HOME
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">WAITING STUDENTS
+                    <a href="{{ url("students/waiting") }}" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">WAITING STUDENTS
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">APPROVED STUDENTS
+                    <a href="{{ url("students/approved") }}" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">APPROVED STUDENTS
                     </a>
                     <a href="{{ url("books") }}" class="list-group-item list-group-item-action text-primary font-monospace rounded p-3 mb-2 text-decoration-none">BOOKS IN LIBRARY
                     </a>

@@ -13,4 +13,9 @@ class Student extends Model
     {
         return $this->belongsTo('App\Models\StudentCategory');
     }
+
+    public function branch()
+    {
+        return $this->belongsTo('App\Models\Branch');
+    }
 }

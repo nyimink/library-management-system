@@ -53,13 +53,16 @@ class AdminController extends Controller
 
         $book->save();
 
-        return back()->with('info', 'A book is created successfully.');
+        return redirect('books')->with('info', 'A book is created successfully.');
     }
 
     ##category
     public function categoryAdd()
     {
-        return view('admin.categoryadd');
+        $category = Category::all();
+        return view('admin.categoryadd', [
+            "categories" => $category
+        ]);
     }
 
     public function categoryCreate()

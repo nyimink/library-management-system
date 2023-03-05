@@ -3,7 +3,7 @@
 @section('content2')
     <div class="container" style="padding: 20px">
         <div class="card">
-            <div class="card-header">Add Book</div>
+            <div class="card-header"><b>Adding a Book</b></div>
             @if ($errors->any())
                 <div class="alert alert-warning">
                     @foreach ($errors->all() as $err)

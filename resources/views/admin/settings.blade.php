@@ -1,9 +1,10 @@
-@extends('layouts.adminhome')
+@extends('layouts.app')
 
-@section('content2')
+@section('content')
     <div class="container" style="padding: 20px;">
+        <a href="{{ url("home") }}" class="btn btn-outline-secondary mb-4" style="width: 90px">&#8617; home</a>
         <div class="card">
-            <div class="card-header">Settings</div>
+            <div class="card-header"><b>Settings</b></div>
             <div class="card-body" style="padding: 40px">
                 <div class="row">
                     <div class="col-6">
