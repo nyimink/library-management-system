@@ -23,6 +23,7 @@ class StudentFactory extends Factory
             'branch_id' => rand(1, 5),
             'student_category_id' => rand(1, 3),
             'email' => $this->faker->email,
+            'password'=> 'password',
             'books_issue' => rand(1, 5),
         ];
     }

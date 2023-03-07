@@ -19,7 +19,8 @@ return new class extends Migration
             $table->integer('branch_id');
             $table->integer('student_category_id');
             $table->string('email');
-            $table->integer('books_issue');
+            $table->integer('books_issue')->default(0);
+            $table->string('password');
             $table->integer('approve')->default(0);
             $table->timestamps();
         });

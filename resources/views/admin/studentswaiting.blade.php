@@ -2,11 +2,22 @@
 
 @section('content')
     <div class="container" style="padding: 20px;">
-        <a href="{{ url("home") }}" class="btn btn-outline-secondary mb-4" style="width: 90px">&#8617; home</a>
-        <a href="{{ url("students/approved") }}" class="btn btn-outline-secondary mb-4">&#8598; approved students</a>
-        <div class="card">
-            <div class="card-header"><b>All Undeciding Students</b></div>
+        <a href="{{ url("home") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
+        <a href="{{ url("students/approved") }}" class="btn btn-secondary mb-4">&#8598; approved students</a>
+        @if (session('approve'))
+            <div class="alert alert-info">
+                {{ session('approve') }}
+            </div>
+        @endif
+        @if (session('reject'))
+            <div class="alert alert-danger">
+                {{ session('reject') }}
+            </div>
+        @endif
+        <div class="card bg-light">
+            <div class="card-header text-dark"><b>All Undeciding Students</b></div>
             <div class="card-body" style="padding: 20px">
+                {{ $students->links() }}
                 <div class="row">
                     <div class="col-10">
                         <form action="{{ url('/students/search/waiting') }}" method="get">
@@ -19,7 +30,7 @@
                         </form>
                     </div>
                     <div class="col-2">
-                        <a href="{{ url('/refresh/waiting') }}" class="btn btn-sm btn-outline-info float-end">&#8635; refresh</a>
+                        <a href="{{ url('/refresh/waiting') }}" class="btn btn-sm btn-info float-end">&#8635; refresh</a>
                     </div>
                 </div>
                 <table class="table mt-4">
@@ -41,8 +52,8 @@
                             <td>{{ $student->studentCategory->name }}</td>
                             <td>{{ $student->email }}</td>
                             <td>
-                                <a href="{{ url("students/approve/$student->id") }}" class="btn btn-sm btn-success">Approve</a>
-                                <a href="{{ url("students/reject/$student->id") }}" class="btn btn-sm btn-danger" onClick="return confirm('Are you sure to reject?')">Reject</a>
+                                <a href="{{ url("students/approve/$student->id") }}" class="btn btn-sm btn-outline-success">Approve</a>
+                                <a href="{{ url("students/reject/$student->id") }}" class="btn btn-sm btn-outline-danger" onClick="return confirm('Are you sure to reject?')">Reject</a>
                             </td>
                         </tr>
                     @endforeach

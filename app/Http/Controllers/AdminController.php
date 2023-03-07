@@ -15,7 +15,7 @@ class AdminController extends Controller
     ##books
     public function bookShow()
     {
-        $book = Book::all();
+        $book = Book::latest()->paginate(30);
 
         return view('admin.books',[
             "books" => $book

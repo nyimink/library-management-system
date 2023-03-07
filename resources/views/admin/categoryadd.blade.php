@@ -2,8 +2,8 @@
 
 @section('content2')
     <div class="container" style="padding: 20px;">
-        <div class="card">
-            <div class="card-header"><b>Adding Book Category</b></div>
+        <div class="card bg-light">
+            <div class="card-header text-dark"><b>Adding Book Category</b></div>
             @if ($errors->any())
                 <div class="alert alert-warning">
                     @foreach ($errors->all() as $err)
@@ -20,7 +20,7 @@
                 @csrf
                 <div class="row mb-4 mt-2 align-items-center">
                     <div class="col-4">
-                        <label for="" class="float-end">Category:</label>
+                        <label for="" class="float-end text-dark">Category:</label>
                     </div>
                     <div class="col-8">
                         <input type="text" name="name" class="form-control" style="width: 90%"

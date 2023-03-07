@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container" style="padding: 20px;">
-        <a href="{{ url("home") }}" class="btn btn-outline-secondary mb-4" style="width: 90px">&#8617; home</a>
-        <a href="{{ url("students/waiting") }}" class="btn btn-outline-secondary mb-4">&#8599; waiting students</a>
-        <div class="card">
-            <div class="card-header"><b>All Approved Students</b></div>
+        <a href="{{ url("home") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
+        <a href="{{ url("students/waiting") }}" class="btn btn-secondary mb-4">&#8599; waiting students</a>
+        <div class="card bg-light">
+            <div class="card-header text-dark"><b>All Approved Students</b></div>
             <div class="card-body" style="padding: 20px">
+                {{ $students->links() }}
                 <div class="row">
                     <div class="col-10">
                         <form action="{{ url('/students/search') }}" method="get">
@@ -19,7 +20,7 @@
                         </form>
                     </div>
                     <div class="col-2">
-                        <a href="{{ url('/refresh') }}" class="btn btn-sm btn-outline-info float-end">&#8635; refresh</a>
+                        <a href="{{ url('/refresh') }}" class="btn btn-sm btn-info float-end">&#8635; refresh</a>
                     </div>
                 </div>
                 <table class="table mt-4">
@@ -38,7 +39,10 @@
                             <td>{{ $student->branch->name }}</td>
                             <td>{{ $student->rollNumber }}</td>
                             <td class="text-center">{{ $student->books_issue }}</td>
-                            <td><a href="{{ url("student/detail/$student->id") }}" class="btn btn-sm btn-outline-secondary">Detail</a></td>
+                            <td>
+                                <a href="{{ url("students/ban/$student->id") }}" class="btn btn-outline-danger btn-sm" style="width: 60px" onClick="return confirm('Are you sure to ban this student?')">Ban</a>
+                                <a href="{{ url("student/detail/$student->id") }}" class="btn btn-sm btn-outline-secondary">Detail</a>
+                            </td>
                         </tr>
                     @endforeach
                 </table>

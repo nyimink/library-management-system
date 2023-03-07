@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container" style="padding: 20px;">
-        <a href="{{ url("home") }}" class="btn btn-outline-secondary mb-4" style="width: 90px">&#8617; home</a>
-        <div class="card">
-            <div class="card-header"><b>Settings</b></div>
+        <a href="{{ url("home") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
+        <div class="card bg-light">
+            <div class="card-header text-dark"><b>Settings</b></div>
             <div class="card-body" style="padding: 40px">
                 <div class="row">
                     <div class="col-6">
@@ -13,12 +13,12 @@
                                 {{ session('info') }}
                             </div>
                         @endif
-                        <h3 class="ms-4 mb-5">School Branches</h3>
+                        <h3 class="ms-4 mb-5 text-dark">School Branches</h3>
                         <form action="{{ url('branch/add') }}" method="post">
                             @csrf
                             <div class="row mb-4 mt-2 align-items-center">
                                 <div class="col-3">
-                                    <label for="">Branch Name:</label>
+                                    <label for="" class="text-dark">Branch Name:</label>
                                 </div>
                                 <div class="col-9">
                                     <input type="text" name="branchName" class="form-control" style=""
@@ -37,12 +37,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h3 class="ms-4 mb-5">Student Categories</h3>
+                        <h3 class="ms-4 mb-5 text-dark">Student Categories</h3>
                         <form action="{{ url("/categories/add/students") }}" method="post">
                             @csrf
                             <div class="row mb-4 mt-2 align-items-center">
                                 <div class="col-3">
-                                    <label for="">Category:</label>
+                                    <label for="" class="text-dark">Category:</label>
                                 </div>
                                 <div class="col-9">
                                     <input type="text" name="name" class="form-control" style=""
@@ -51,7 +51,7 @@
                             </div>
                             <div class="row mb-4 mt-2 align-items-center">
                                 <div class="col-3">
-                                    <label for="">Max Allow:</label>
+                                    <label for="" class="text-dark">Max Allow:</label>
                                 </div>
                                 <div class="col-9">
                                     <input type="text" name="max_allow" class="form-control" style=""

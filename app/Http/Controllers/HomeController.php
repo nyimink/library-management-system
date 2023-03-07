@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
+use App\Models\StudentCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,5 +26,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('layouts.adminhome');
+    }
+
+    public function home()
+    {
+        $branch = Branch::all();
+        $studentCategory = StudentCategory::all();
+        return view('welcome', [
+            "branch" => $branch,
+            "category" => $studentCategory,
+        ]);
     }
 }

@@ -2,8 +2,8 @@
 
 @section('content2')
     <div class="container" style="padding: 20px">
-        <div class="card">
-            <div class="card-header"><b>Adding a Book</b></div>
+        <div class="card bg-light">
+            <div class="card-header text-dark"><b>Adding a Book</b></div>
             @if ($errors->any())
                 <div class="alert alert-warning">
                     @foreach ($errors->all() as $err)
@@ -20,7 +20,7 @@
                 @csrf
                 <div class="row mb-4 mt-2 align-items-center">
                     <div class="col-4">
-                        <label for="" class="float-end">Title of Book:</label>
+                        <label for="" class="float-end text-dark">Title of Book:</label>
                     </div>
                     <div class="col-8">
                         <input type="text" name="title" class=" form-control" style="width: 90%" placeholder="Enter the book's title">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="row mb-4 align-items-center">
                     <div class="col-4">
-                        <label for="" class="float-end">Author Name:</label>
+                        <label for="" class="float-end text-dark">Author Name:</label>
                     </div>
                     <div class="col-8">
                         <input type="text" name="author" class="form-control" style="width: 90%" placeholder="Enter the author's name of the book">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="row mb-4 align-items-center">
                     <div class="col-4">
-                        <label for="" class="float-end">Description of Book:</label>
+                        <label for="" class="float-end text-dark">Description of Book:</label>
                     </div>
                     <div class="col-8">
                         <textarea name="description" class="form-control" style="width: 90%" placeholder="Description of the book"></textarea>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="row mb-4 align-items-center">
                     <div class="col-4">
-                        <label for="" class="float-end">Category:</label>
+                        <label for="" class="float-end text-dark">Category:</label>
                     </div>
                     <div class="col-8">
                         <select name="category_id" class="form-select" style="width: 90%">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="row mb-4 align-items-center">
                     <div class="col-4">
-                        <label for="" class="float-end">Number of Issues:</label>
+                        <label for="" class="float-end text-dark">Number of Issues:</label>
                     </div>
                     <div class="col-8">
                         <input type="text" name="issue" class="form-control" style="width: 90%" placeholder="How many issues are there?">
