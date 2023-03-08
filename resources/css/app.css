@@ -2,7 +2,8 @@ body{
 	/* width: 100%;
 	height: 100vh; */
 	margin: 0;
-	background-image: url(https://cdn-media-2.freecodecamp.org/w1280/5f9c9a6b740569d1a4ca2582.jpg) ;
+	/* background-image: url(https://cdn-media-2.freecodecamp.org/w1280/5f9c9a6b740569d1a4ca2582.jpg) ; */
+    background-image: url('/public/image/library_background.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
