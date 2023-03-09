@@ -16,6 +16,11 @@
                     {{ session('info') }}
                 </div>
             @endif
+            @if (session('delete'))
+                <div class="alert alert-danger">
+                    {{ session('delete') }}
+                </div>
+            @endif
             <form method="post" enctype="multipart/form-data" style="padding: 20px">
                 @csrf
                 <div class="row mb-4 mt-2 align-items-center">
@@ -24,7 +29,7 @@
                     </div>
                     <div class="col-8">
                         <input type="text" name="name" class="form-control" style="width: 90%"
-                            placeholder="Enter the new category">
+                            placeholder="Enter the new category" required>
                     </div>
                     <div class="mt-4 d-flex justify-content-evenly">
                         <button type="submit" class="btn btn-primary">Add Category</button>
@@ -45,10 +50,14 @@
                             <tr>
                                 <td>{{ $category->id }}</td>
                                 <td><b>{{ $category->name }}</b></td>
-                                <td>EDIT DELETE</td>
+                                <td>
+                                    <a href="{{ url("/category/edit/$category->id") }}" class="btn btn-sm btn-outline-dark">Edit</a>
+                                    <a href="{{ url("/category/delete/$category->id") }}" class="btn btn-sm btn-outline-danger" onClick="return confirm('Are you sure to delete this category?')">Delete</a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>
+                    {{ $categories->links() }}
                 </div>
                 <div class="col-1"></div>
             </div>

@@ -23,7 +23,7 @@
                         <label for="" class="float-end text-dark">Title of Book:</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="title" class=" form-control" style="width: 90%" placeholder="Enter the book's title">
+                        <input required type="text" name="title" class=" form-control" style="width: 90%" placeholder="Enter the book's title">
                     </div>
                 </div>
                 <div class="row mb-4 align-items-center">
@@ -31,7 +31,7 @@
                         <label for="" class="float-end text-dark">Author Name:</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="author" class="form-control" style="width: 90%" placeholder="Enter the author's name of the book">
+                        <input required type="text" name="author" class="form-control" style="width: 90%" placeholder="Enter the author's name of the book">
                     </div>
                 </div>
                 <div class="row mb-4 align-items-center">
@@ -47,7 +47,7 @@
                         <label for="" class="float-end text-dark">Category:</label>
                     </div>
                     <div class="col-8">
-                        <select name="category_id" class="form-select" style="width: 90%">
+                        <select name="category_id" class="form-select" style="width: 90%" required>
                             <option value="" disabled selected>Choose category</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -60,7 +60,7 @@
                         <label for="" class="float-end text-dark">Number of Issues:</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="issue" class="form-control" style="width: 90%" placeholder="How many issues are there?">
+                        <input required type="text" name="issue" class="form-control" style="width: 90%" placeholder="How many issues are there?">
                     </div>
                 </div>
                 <div class="mt-5 d-flex justify-content-evenly">

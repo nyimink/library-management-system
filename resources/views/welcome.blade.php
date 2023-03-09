@@ -11,7 +11,7 @@
                     @csrf
                     <div class="mb-4">
                         <label class="mb-1">First Name</label>
-                        <input type="text" name="firstName" class="form-control" placeholder="Enter your first name">
+                        <input type="text" name="firstName" class="form-control" placeholder="Enter your first name" required>
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Last Name</label>
@@ -19,11 +19,11 @@
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Roll Number</label>
-                        <input type="integer" name="rollNumber" class="form-control" placeholder="Enter your roll number">
+                        <input type="integer" name="rollNumber" class="form-control" placeholder="Enter your roll number" required>
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Branch Name</label>
-                        <select name="branch" class="form-select" required>
+                        <select name="branch" class="form-select" required required>
                                 <option disabled selected>Choose school branch</option>
                             @foreach ($branch as $branch)
                                 <option value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Student Category</label>
-                        <select name="category" class="form-select">
+                        <select name="category" class="form-select" required>
                                 <option value="" disabled selected>Choose student category</option>
                             @foreach ($category as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -41,15 +41,15 @@
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="Enter your email address">
+                        <input type="text" name="email" class="form-control" placeholder="Enter your email address" required>
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Enter password">
+                        <input type="password" name="password" class="form-control" placeholder="Enter password" required>
                     </div>
                     <div class="mb-4">
-                        <label class="mb-1">Confirm Password</label>
-                        <input type="password" name="" class="form-control" placeholder="">
+                        <label for="password-confirm" class="mb-1">{{ __('Confirm Password') }}</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm password">
                     </div>
 
                     <input type="submit" name="submit" class="btn btn-success w-100 mt-3" value="Submit">

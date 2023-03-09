@@ -2,20 +2,17 @@
 
 @section('content')
     <div class="container" style="padding: 20px">
-        <a href="{{ url("/redirects") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
-        <a href="{{ url("books/add") }}" class="btn btn-secondary mb-4">&#8629; add a book</a>
+        <a href="{{ url('/home') }}" class="btn btn-light mb-4 me-2" style="width: 90px">books</a>
+        <a href="{{ url("students/author") }}" class="btn btn-light mb-4 me-2">author list</a>
+        <a href="{{ url("") }}" class="btn btn-light mb-4 me-2">author list</a>
+        <a href="{{ url("") }}" class="btn btn-light mb-4 me-2">author list</a>
         <div class="card bg-light">
             <div class="card-header text-dark"><b>All Books in LIBRARY</b></div>
             <div class="card-body p-4">
-                @if (session('info'))
-                    <div class="alert alert-info">
-                        {{ session('info') }}
-                    </div>
-                @endif
                 {{ $books->links() }}
                 <div class="row">
                     <div class="col-10">
-                        <form action="{{ url('/books/search') }}" method="get">
+                        <form action="{{ url('students/books/search') }}" method="get">
                             <div class="input-group">
                                 <input type="text" name="search"
                                     class="rounded-start border border-secondary border-opacity-75" style="width: 45%"
@@ -38,6 +35,7 @@
                         <td>Category</td>
                         <td>Available</td>
                         <td>Total</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,8 +46,9 @@
                             <td><b>{{ $book->author }}</b></td>
                             <td>{{ $book->description }}</td>
                             <td>{{ $book->category->name }}</td>
-                            <td></td>
-                            <td></td>
+                            <td><span class="badge text-center bg-primary">{{ $book->issue - 0 }}</span></td>
+                            <td><span class="badge text-center bg-danger">{{ $book->issue }}</span></td>
+                            <td><a href="{{ url("subtract/$book->id") }}" class="btn btn-sm btn-primary">Issue</a></td>
                         </tr>
                     @endforeach
                 </tbody>

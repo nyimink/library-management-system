@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="padding: 20px;">
-        <a href="{{ url("home") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
+        <a href="{{ url("/redirects") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
         <a href="{{ url("students/approved") }}" class="btn btn-secondary mb-4">&#8598; approved students</a>
         @if (session('approve'))
             <div class="alert alert-info">

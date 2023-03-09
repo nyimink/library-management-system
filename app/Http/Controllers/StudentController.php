@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        return $this->middleware('isAdmin');
+    }
 
     public function create()
     {
-        $student = new Student;
+        $student = new User;
         $student->firstName = request()->firstName;
         $student->lastName = request()->lastName;
         $student->rollNumber = request()->rollNumber;
@@ -25,12 +27,12 @@ class StudentController extends Controller
 
         $student->save();
 
-        return redirect('home');
+        return redirect('login')->with('info', 'Your account is successfully created. Please log in.');
     }
 
     public function approved()
     {
-        $student = Student::first()->where('approve', '1')->paginate(30);
+        $student = User::first()->where('approve', '1')->paginate(30);
         return view('admin.students',[
             "students" => $student
         ]);
@@ -38,7 +40,7 @@ class StudentController extends Controller
 
     public function approve($id)
     {
-        $student = Student::find($id);
+        $student = User::find($id);
         $student->approve = '1';
         $student->save();
         return back()->with('approve', "Student \"$student->firstName $student->lastName\" is approved.");
@@ -46,14 +48,14 @@ class StudentController extends Controller
 
     public function reject($id)
     {
-        $student = Student::find($id);
+        $student = User::find($id);
         $student->delete();
-        return back()->with('reject', "Student \"$student->firstName $student->lastName\" is reject.");
+        return back()->with('reject', "Student \"$student->firstName $student->lastName\" is rejected.");
     }
 
     public function detail($id)
     {
-        $student = Student::find($id);
+        $student = User::find($id);
         return view('admin.studentdetail', [
             "student" => $student
         ]);
@@ -61,14 +63,16 @@ class StudentController extends Controller
 
     public function ban($id)
     {
-        $student = Student::find($id);
+        $student = User::find($id);
         $student->delete();
-        return redirect('students/approved')->with('info', "$student->name is reject.");
+        return redirect('students/approved')->with('info', "Student \"$student->firstName $student->lastName\" is rejected.");
     }
 
     public function waiting()
     {
-        $student = Student::latest()->where('approve', '0')->paginate(30);
+        $student = User::latest()->where('approve', '0')
+                                ->where('userType', '0')
+                                ->paginate(30);
         return view('admin.studentswaiting', [
             "students" => $student
         ]);
@@ -77,10 +81,11 @@ class StudentController extends Controller
     public function searchWaiting()
     {
         $search = request()->search;
-        $student = Student::where('firstName', 'Like', '%'.$search.'%')
+        $student = User::where('approve', '0')
+                            ->where('firstName', 'Like', '%'.$search.'%')
                             ->orWhere('lastName', 'Like', '%'.$search.'%')
                             ->orWhere('email', 'Like', '%'.$search.'%')
-                            ->get();
+                            ->paginate(20);
         return view('admin.studentswaiting',[
             "students" => $student,
         ]);
@@ -89,10 +94,11 @@ class StudentController extends Controller
     public function search()
     {
         $search = request()->search;
-        $student = Student::where('firstName', 'Like', '%'.$search.'%')
+        $student = User::where('approve', '1')
+                            ->where('firstName', 'Like', '%'.$search.'%')
                             ->orWhere('lastName', 'Like', '%'.$search.'%')
                             ->orWhere('email', 'Like', '%'.$search.'%')
-                            ->get();
+                            ->paginate(20);
         return view('admin.students',[
             "students" => $student,
         ]);

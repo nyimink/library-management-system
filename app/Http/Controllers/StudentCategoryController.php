@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\StudentCategory;
 use Illuminate\Http\Request;
 
@@ -56,9 +57,16 @@ class StudentCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(StudentCategory $studentCategory)
+    public function edit($id)
     {
-        //
+        $categories = StudentCategory::all();
+        $cate = StudentCategory::find($id);
+        $branch = Branch::all();
+        return view('admin.settingseditcate', [
+            "branch" => $branch,
+            "categories" => $categories,
+            "cate" => $cate
+        ]);
     }
 
     /**
@@ -72,8 +80,11 @@ class StudentCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StudentCategory $studentCategory)
+    public function delete($id)
     {
-        //
+        $category = StudentCategory::find($id);
+        $category->delete();
+
+        return back()->with('catedelete', "A student category \"$category->name\" is deleted.");
     }
 }

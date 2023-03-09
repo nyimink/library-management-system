@@ -2,8 +2,13 @@
 
 @section('content')
     <div class="container" style="padding: 20px;">
-        <a href="{{ url("home") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
+        <a href="{{ url("/redirects") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
         <a href="{{ url("students/waiting") }}" class="btn btn-secondary mb-4">&#8599; waiting students</a>
+        @if (session('info'))
+            <div class="alert alert-danger">
+                {{ session('info') }}
+            </div>
+        @endif
         <div class="card bg-light">
             <div class="card-header text-dark"><b>All Approved Students</b></div>
             <div class="card-body" style="padding: 20px">
@@ -40,7 +45,7 @@
                             <td>{{ $student->rollNumber }}</td>
                             <td class="text-center">{{ $student->books_issue }}</td>
                             <td>
-                                <a href="{{ url("students/ban/$student->id") }}" class="btn btn-outline-danger btn-sm" style="width: 60px" onClick="return confirm('Are you sure to ban this student?')">Ban</a>
+                                <a href="{{ url("students/ban/$student->id") }}" class="btn btn-outline-danger btn-sm" onClick="return confirm('Are you sure to ban this student?')">Ban</a>
                                 <a href="{{ url("student/detail/$student->id") }}" class="btn btn-sm btn-outline-secondary">Detail</a>
                             </td>
                         </tr>

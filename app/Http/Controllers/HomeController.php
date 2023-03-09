@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Branch;
 use App\Models\StudentCategory;
 use Illuminate\Http\Request;
@@ -23,12 +24,30 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
-        return view('layouts.adminhome');
+        $books = Book::latest()->paginate(20);
+        return view('student.home', [
+            "books" => $books
+        ]);
     }
 
-    public function home()
+    public function redirects()
+    {
+        $books = Book::latest()->paginate(20);
+
+        if (auth()->user()->userType == '1') {
+            return view('layouts.adminhome');
+        } else {
+            return view('student.home', [
+                "books" => $books
+            ]);
+
+        }
+
+    }
+
+    public function index()
     {
         $branch = Branch::all();
         $studentCategory = StudentCategory::all();
@@ -36,5 +55,38 @@ class HomeController extends Controller
             "branch" => $branch,
             "category" => $studentCategory,
         ]);
+    }
+
+    public function stu_bookSearch()
+    {
+        $category = Book::join('categories', 'books.category_id', '=', 'categories.id')->get("name");
+        // $category = Category::join('books', 'books.category_id', '=', 'categories.id')->get("name");
+        // print_r($category);
+        $search = request()->search;
+        $book = Book::where('title', 'Like', '%'.$search.'%')
+                    ->orWhere('author', 'Like', '%'.$search.'%')
+                    // ->orWhere($category, 'Like', '%'.$search.'%')
+                    ->paginate(20);
+
+        return view('student.home', [
+            "books" => $book
+        ]);
+    }
+
+    public function author()
+    {
+        $books = Book::latest()->paginate(20);
+        return view('student.author', [
+            "books" => $books
+        ]);
+    }
+
+    public function subtract($id)
+    {
+        $avail = Book::find($id);
+        $avail->issue -= 1;
+        $avail->save();
+
+        return back();
     }
 }

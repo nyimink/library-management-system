@@ -21,7 +21,7 @@ class BookFactory extends Factory
             'author' => $this->faker->name,
             'description' => $this->faker->text,
             'category_id' => rand(1, 5),
-            'issue' => rand(1, 3),
+            'issue' => rand(1, 100),
         ];
     }
 }

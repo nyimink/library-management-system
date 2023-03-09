@@ -9,6 +9,7 @@ use App\Models\Branch;
 use App\Models\Category;
 use App\Models\Student;
 use App\Models\StudentCategory;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,7 +33,8 @@ class DatabaseSeeder extends Seeder
             "name" => $name
         ]);
 
-        Student::factory(100)->create();
+        // Student::factory(100)->create();
+        User::factory(20)->create();
 
         $data = ["Under Graduate", "Post Graduate", "Certificate Level"];
         foreach ($data as $name)

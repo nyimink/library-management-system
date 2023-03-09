@@ -12,6 +12,16 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function studentCategory()
+    {
+        return $this->belongsTo('App\Models\StudentCategory');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo('App\Models\Branch');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

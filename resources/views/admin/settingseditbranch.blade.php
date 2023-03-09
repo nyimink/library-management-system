@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container" style="padding: 20px;">
+        <a href="{{ url("/settings") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; back</a>
         <a href="{{ url("/redirects") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
         <div class="card bg-light">
             <div class="card-header text-dark"><b>Settings</b></div>
@@ -19,7 +20,7 @@
                             </div>
                         @endif
                         <h3 class="ms-4 mb-5 text-dark">School Branches</h3>
-                        <form action="{{ url('branch/add') }}" method="post">
+                        <form method="post">
                             @csrf
                             <div class="row mb-4 mt-2 align-items-center">
                                 <div class="col-3">
@@ -27,10 +28,10 @@
                                 </div>
                                 <div class="col-9">
                                     <input type="text" name="branchName" class="form-control" style=""
-                                        placeholder="Enter the new branch name" required>
+                                        placeholder="Enter the new branch name" required value="{{ $branches->name }}">
                                 </div>
                                 <div class="mt-4 d-flex justify-content-evenly">
-                                    <button type="submit" class="btn btn-sm btn-primary">Add Branch</button>
+                                    <button type="submit" class="btn btn-sm btn-primary">Update Branch</button>
                                     <div></div>
                                 </div>
                             </div>
