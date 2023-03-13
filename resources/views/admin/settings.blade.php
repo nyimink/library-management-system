@@ -9,13 +9,15 @@
                 <div class="row">
                     <div class="col-6">
                         @if (session('info'))
-                            <div class="alert alert-info">
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
                                 {{ session('info') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
                         @if (session('delete'))
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ session('delete') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
                         <h3 class="ms-4 mb-5 text-dark">School Branches</h3>

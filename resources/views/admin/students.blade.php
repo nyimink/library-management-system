@@ -5,8 +5,9 @@
         <a href="{{ url("/redirects") }}" class="btn btn-secondary mb-4" style="width: 90px">&#8617; home</a>
         <a href="{{ url("students/waiting") }}" class="btn btn-secondary mb-4">&#8599; waiting students</a>
         @if (session('info'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session('info') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         <div class="card bg-light">

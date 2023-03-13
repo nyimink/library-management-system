@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('author');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('category_id');
             $table->integer('available')->nullable();
             $table->integer('issue')->nullable();

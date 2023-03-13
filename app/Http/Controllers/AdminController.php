@@ -75,7 +75,7 @@ class AdminController extends Controller
 
         $book->save();
 
-        return redirect('books')->with('info', 'A book is created successfully.');
+        return redirect('books')->with('info', "The book \"$book->title\" by the author \"$book->author\" is added successfully.");
     }
 
     ##book category
@@ -136,7 +136,7 @@ class AdminController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect('/category/add')->with('delete', 'A category is deleted.');
+        return redirect('/category/add')->with('delete', "A \"$category->name\" category is deleted.");
     }
 
     ##settings

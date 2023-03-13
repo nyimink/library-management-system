@@ -11,7 +11,7 @@
                     @csrf
                     <div class="mb-4">
                         <label class="mb-1">First Name</label>
-                        <input type="text" name="firstName" class="form-control" placeholder="Enter your first name" required>
+                        <input type="text" name="firstName" class="form-control" placeholder="Enter your first name" required autofocus>
                     </div>
                     <div class="mb-4">
                         <label class="mb-1">Last Name</label>
