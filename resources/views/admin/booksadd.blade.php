@@ -63,6 +63,14 @@
                         <input required type="text" name="issue" class="form-control" style="width: 90%" placeholder="How many issues are there?">
                     </div>
                 </div>
+                <div class="row mb-4 align-items-center">
+                    <div class="col-4">
+                        <label for="" class="float-end text-dark">Currently available books:</label>
+                    </div>
+                    <div class="col-8">
+                        <input required type="text" name="available" class="form-control" style="width: 90%" placeholder="How many available books are there in shelves?">
+                    </div>
+                </div>
                 <div class="mt-5 d-flex justify-content-evenly">
                 <button type="submit" class="btn btn-primary">Add Book</button>
                 <div></div>

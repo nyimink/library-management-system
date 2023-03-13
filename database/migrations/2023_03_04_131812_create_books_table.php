@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('description')->nullable();
             $table->integer('category_id');
+            $table->integer('available')->nullable();
             $table->integer('issue')->nullable();
             $table->timestamps();
         });

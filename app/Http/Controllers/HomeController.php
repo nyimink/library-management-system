@@ -84,7 +84,7 @@ class HomeController extends Controller
     public function subtract($id)
     {
         $avail = Book::find($id);
-        $avail->issue -= 1;
+        $avail->available -= 1;
         $avail->save();
 
         return back();

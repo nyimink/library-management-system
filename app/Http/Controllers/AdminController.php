@@ -71,6 +71,7 @@ class AdminController extends Controller
         $book->description = request()->description;
         $book->category_id = request()->category_id;
         $book->issue = request()->issue;
+        $book->available = request()->available;
 
         $book->save();
 

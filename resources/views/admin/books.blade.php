@@ -38,6 +38,7 @@
                         <td>Category</td>
                         <td>Available</td>
                         <td>Total</td>
+                        <td>Total</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,8 +49,9 @@
                             <td><b>{{ $book->author }}</b></td>
                             <td>{{ $book->description }}</td>
                             <td>{{ $book->category->name }}</td>
-                            <td></td>
-                            <td></td>
+                            <td><span class="badge bg-danger rounded-pill">{{ $book->available }}</span></td>
+                            <td><span class="badge bg-primary rounded-pill">{{ $book->issue }}</span></td>
+                            <td><a href="" class="btn btn-sm btn-outline-secondary">Detail</a></td>
                         </tr>
                     @endforeach
                 </tbody>

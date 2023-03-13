@@ -63,7 +63,8 @@ Route::get('/categories/delete/students/{id}', [StudentCategoryController::class
 Auth::routes();
 
 Route::get('/students/books/search', [HomeController::class, "stu_bookSearch"]);
-Route::get('/students/author', [HomeController::class, "author"]);
+// Route::get('/students/author', [HomeController::class, "author"]);
+Route::get('/students/refresh/books', [HomeController::class, "home"]);
 
 Route::get('/subtract/{id}', [HomeController::class, "subtract"]);
 
