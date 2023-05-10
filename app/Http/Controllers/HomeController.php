@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Branch;
 use App\Models\StudentCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -36,13 +37,16 @@ class HomeController extends Controller
     {
         $books = Book::latest()->paginate(20);
 
-        if (auth()->user()->userType == '1') {
-            return view('layouts.adminhome');
+        if (Auth::check()) {
+            if (auth()->user()->userType == '1') {
+                return view('layouts.adminhome');
+            } else {
+                return view('student.home', [
+                    "books" => $books
+                ]);
+            }
         } else {
-            return view('student.home', [
-                "books" => $books
-            ]);
-
+            return redirect("/");
         }
 
     }
