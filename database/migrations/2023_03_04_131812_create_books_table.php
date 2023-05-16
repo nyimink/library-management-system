@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('author');
             $table->text('description')->nullable();
             $table->integer('category_id');
-            $table->integer('available')->default(DB::raw("issue"));
-            $table->integer('issue')->nullable();
+            $table->integer('available')->default(DB::raw("total"));
+            $table->integer('total');
             $table->timestamps();
         });
     }

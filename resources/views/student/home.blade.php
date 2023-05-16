@@ -72,11 +72,11 @@
                                 @if (Auth::check())
                                         <td><span class="badge text-center bg-danger">{{ $book->available }}</span></td>
                                 @endif
-                                <td><span class="badge text-center bg-primary">{{ $book->issue }}</span></td>
+                                <td><span class="badge text-center bg-primary">{{ $book->total }}</span></td>
                                 @if (Auth::check())
                                     @if (Auth::user()->approve == '1')
                                         <td><a href="{{ url("subtract/$book->id") }}"
-                                                class="btn btn-sm btn-success">Issue</a></td>
+                                                class="btn btn-sm btn-success">Get</a></td>
                                     @endif
                                 @endif
                             </tr>
