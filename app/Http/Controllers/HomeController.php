@@ -53,12 +53,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $branch = Branch::all();
-        $studentCategory = StudentCategory::all();
-        return view('welcome', [
-            "branch" => $branch,
-            "category" => $studentCategory,
-        ]);
+        return view("login");
     }
 
     public function stu_bookSearch()

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Student;
+use App\Models\StudentCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +13,17 @@ class StudentController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('isAdmin');
+        return $this->middleware('isAdmin')->except("register");
+    }
+
+    public function register()
+    {
+        $branch = Branch::all();
+        $studentCategory = StudentCategory::all();
+        return view('register', [
+            "branch" => $branch,
+            "category" => $studentCategory,
+        ]);
     }
 
     public function create()

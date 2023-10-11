@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\StudentCategory;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,28 +26,36 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Book::factory(25)->create();
+        // Book::factory(25)->create();
 
-        $list = ["General", "Mobile", "Art", "Tech", "Language"];
-        foreach ($list as $name)
-        Category::create([
-            "name" => $name
-        ]);
+        // $list = ["General", "Mobile", "Art", "Tech", "Language"];
+        // foreach ($list as $name)
+        // Category::create([
+        //     "name" => $name
+        // ]);
 
         // Student::factory(100)->create();
-        User::factory(20)->create();
-
-        $data = ["Under Graduate", "Post Graduate", "Certificate Level"];
-        foreach ($data as $name)
-        StudentCategory::create([
-            "name" => $name,
-            "max_allow" => '10'
+        User::create([
+            "firstName" => "Admin",
+            "email" => "admin@gmail.com",
+            "password" => Hash::make("password"),
+            "rollNumber" => 0,
+            "branch_id" => 0,
+            "student_category_id" => 0,
+            "userType" => 1
         ]);
 
-        $branch = ["Tamwe", "Botahtaung", "Latha", "Pansoedan", "Thanlyin"];
-        foreach ($branch as $name)
-        Branch::create([
-            "name" => $name,
-        ]);
+        // $data = ["Under Graduate", "Post Graduate", "Certificate Level"];
+        // foreach ($data as $name)
+        // StudentCategory::create([
+        //     "name" => $name,
+        //     "max_allow" => '10'
+        // ]);
+
+        // $branch = ["Tamwe", "Botahtaung", "Latha", "Pansoedan", "Thanlyin"];
+        // foreach ($branch as $name)
+        // Branch::create([
+        //     "name" => $name,
+        // ]);
     }
 }

@@ -40,6 +40,7 @@ Route::get('/branch/edit/{id}', [AdminController::class, "branchEdit"]);
 Route::post('/branch/edit/{id}', [AdminController::class, "branchUpdate"]);
 Route::get('/branch/delete/{id}', [AdminController::class, "branchDelete"]);
 
+Route::get('/students/register', [StudentController::class, "register"]);
 Route::post('/students/create', [StudentController::class, "create"]);
 
 Route::get('/students/approved', [StudentController::class, "approved"]);
@@ -66,7 +67,7 @@ Route::get('/students/books/search', [HomeController::class, "stu_bookSearch"]);
 // Route::get('/students/author', [HomeController::class, "author"]);
 Route::get('/students/refresh/books', [HomeController::class, "home"]);
 
-Route::get('/subtract/{id}', [HomeController::class, "subtract"]);
+Route::get('/subtract/{id}', [HomeController::class, "subtract"])->middleware('auth');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');

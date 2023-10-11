@@ -16,10 +16,10 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if(auth()->check()) {
-            if(auth()->user()->userType == '0') {
-                return back();
+            if(auth()->user()->userType == '1') {
+                return $next($request);
             }
         }
-        return $next($request);
+        return back();
     }
 }
